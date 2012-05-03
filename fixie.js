@@ -2,25 +2,32 @@
  * Fixie.js
  * by Ryhan Hassan
  * ryhanh@me.com
+ * and Ilter Canberk
+ * anything@icanberk.com
  *
  * Automagically adds filler content
  * whenever an element has class="fixie".
  * Hope you find it useful :)
  */ 
 (
-
 function () {
-if (typeof window.getElementsByClassName != 'function') {
-    document.getElementsByClassName = function (cl) {
-        var retnode = [];
-        var myclass = new RegExp('\\b' + cl + '\\b');
-        var elem = this.getElementsByTagName('*');
-        for (var i = 0; i < elem.length; i++) {
-            var classes = elem[i].className;
-            if (myclass.test(classes)) retnode.push(elem[i]);
+
+    function getElementsByAttribute(oElm, strTagName, strAttributeName, strAttributeValue){
+    var arrElements = (strTagName == "*" && oElm.all)? oElm.all : oElm.getElementsByTagName(strTagName);
+    var arrReturnElements = new Array();
+    var oAttributeValue = (typeof strAttributeValue != "undefined")? new RegExp("(^|\\s)" + strAttributeValue + "(\\s|$)", "i") : null;
+    var oCurrent;
+    var oAttribute;
+    for(var i=0; i<arrElements.length; i++){
+        oCurrent = arrElements[i];
+        oAttribute = oCurrent.getAttribute && oCurrent.getAttribute(strAttributeName);
+        if(typeof oAttribute == "string" && oAttribute.length > 0){
+            if(typeof strAttributeValue == "undefined" || (oAttributeValue && oAttributeValue.test(oAttribute))){
+                arrReturnElements.push(oCurrent);
+            }
         }
-        return retnode;
-    };
+    }
+    return arrReturnElements;
 }
     /* 
      * Spec
@@ -33,7 +40,6 @@ if (typeof window.getElementsByClassName != 'function') {
      * fixie_fetchParagraphs();
      *
      */
-
 
     /* 
      * fixie_handler(element)
@@ -167,12 +173,10 @@ if (typeof window.getElementsByClassName != 'function') {
         return fixie_str;
     }
 
-
-
-    var className = "fixie";
-    var to_be_fixied = document.getElementsByClassName(className);
+    var attribute = "data-fixie";
+    var to_be_fixied = getElementsByAttribute(document, "*", attribute, "true");
     for (var fixie_i = 0; fixie_i < to_be_fixied.length; fixie_i++) {
-        fixie_handler(to_be_fixied[fixie_i]);
+       fixie_handler(to_be_fixied[fixie_i]);
     }
 
 })();
