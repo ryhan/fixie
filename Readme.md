@@ -48,7 +48,7 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 
 ## Tips
 
-### Add class fixxie to containers
+### Add class fixie to containers
 Fixxie will act on all child elements, but will never 
 overwrite content within an element.
 
