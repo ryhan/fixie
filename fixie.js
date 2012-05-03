@@ -47,7 +47,7 @@ function () {
      * Returns false if tag is unrecognized.
      */
     function fixie_handler(element) {
-        if (!/^\s*$/.test(element.innerHTML)){
+        if (element.innerHTML!=""){
             var childs = element.children;
             if(childs.length){
                 for(var fixie_i = 0; fixie_i < childs.length; fixie_i++){
@@ -146,13 +146,12 @@ function () {
     }
 
     function fixie_fetch(min, max, func){
-        var fixie_length = constrain(min, max) - 1;
-        var fixie_str = "";
+        var fixie_length = constrain(min, max) ;
+        var result = [];
         for (var fixie_i = 0; fixie_i < fixie_length ; fixie_i++) {
-            fixie_str += func() + " ";
+            result.push(func());
         }
-        fixie_str += func();
-        return fixie_capitalize(fixie_str);
+        return fixie_capitalize(result.join(' '));
     }
 
     function fixie_fetchPhrase() {
