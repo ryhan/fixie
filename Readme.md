@@ -28,11 +28,11 @@ For example, if you wanted one filler paragraph, you could use
 
 Call 
 ```
-fixie.init([".array", "#of .selectors", ".that", ".should", "#be .populated .with .lorem"]) 
+fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"]) 
 ```
 or 
 ```
-fixie.init(".string, #of .comma .separated .selectors, .that, .should, #be .populated .with .lorem")
+fixie.init(".string, #of > .comma, .separated, .selectors, .that, .should, #be > .populated, .with, .lorem")
 ```
 in the JavaScript console or within a `<script>` tag.
 
