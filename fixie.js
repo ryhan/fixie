@@ -9,8 +9,11 @@
  */
 
 
-function fixie(){
-	var to_be_fixied = document.getElementsByClassName('fixie');
+function fixie(className){
+	if (className == null) {
+    		var className = "fixie";
+  	}
+	var to_be_fixied = document.getElementsByClassName(className);
 	for (var fixie_i = 0; fixie_i <to_be_fixied.length; fixie_i++){
 		fixie_handler(to_be_fixied[fixie_i]);
 	}
