@@ -36,6 +36,11 @@ fixie.init(".string, #of > .comma, .separated, .selectors, .that, .should, #be >
 ```
 in the JavaScript console or within a `<script>` tag.
 
+You can also call Fixie on all empty elements on a page by calling:
+```
+fixie.init(':empty')
+```
+
 ## Supported Elements
 Fixie inserts the right type of content based on the tag name. Here are some major types you should be aware of:
 
