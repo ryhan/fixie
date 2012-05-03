@@ -7,7 +7,7 @@
  * whenever an element has class="fixie".
  * Hope you find it useful :)
  */ 
-(
+var fixie = (
 
 function () {
 if (typeof window.getElementsByClassName != 'function') {
@@ -174,5 +174,34 @@ if (typeof window.getElementsByClassName != 'function') {
     for (var fixie_i = 0; fixie_i < to_be_fixied.length; fixie_i++) {
         fixie_handler(to_be_fixied[fixie_i]);
     }
+
+    function init_str(selector_str) {
+        if (!document.querySelectorAll) {
+            return false;
+        }
+
+        try {
+            var element_list = document.querySelectorAll(selector_str);
+            for (var i = 0; i < element_list.length; i++) {
+                fixie_handler(element_list[i]);
+            }
+            return true;
+        } 
+        catch (err) {
+            return false;
+        }
+    }
+
+    return {
+        /* returns true if successful, false otherwise */
+        'init': function(strOrArr) {
+            if (typeof strOrArr === "object") {
+                return init_str(strOrArr.join(","));
+            }
+            else {
+                return init_str(strOrArr);
+            }
+        }
+    };
 
 })();
