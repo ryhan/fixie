@@ -24,6 +24,18 @@ Wherever you need filler content, set `class="fixie"`.
 For example, if you wanted one filler paragraph, you could use
 `<p class="fixie"></p>`
 
+### Step 2 - Alternative
+
+Call 
+```
+fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"]) 
+```
+or 
+```
+fixie.init(".string, #of > .comma, .separated, .selectors, .that, .should, #be > .populated, .with, .lorem")
+```
+in the JavaScript console or within a `<script>` tag.
+
 ## Supported Elements
 Fixie inserts the right type of content based on the tag name. Here are some major types you should be aware of:
 
