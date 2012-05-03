@@ -110,17 +110,9 @@ function () {
             break;
 
         case 'img':
-            if (element.width == 0) {
-                element.width = element.height;
-            }
-            if (element.height == 0) {
-                element.height = element.width;
-            }
-            if (element.height == 0) {
-                element.height = 100;
-                element.width = 250;
-            }
-            element.src = "http://placehold.it/" + element.width + "x" + element.height;
+            var width = element.width || (element.width = 250);
+            var height = element.height || (element.height = 100);
+            element.src = "http://placehold.it/" + width + "x" + height;
             break;
 
         default:
