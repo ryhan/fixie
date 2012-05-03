@@ -47,7 +47,7 @@ function () {
      * Returns false if tag is unrecognized.
      */
     function fixie_handler(element) {
-        if (element.innerHTML!=""){
+        if (/^\s*$/.test(element.innerHTML)){
             var childs = element.children;
             if(childs.length){
                 for(var fixie_i = 0; fixie_i < childs.length; fixie_i++){
