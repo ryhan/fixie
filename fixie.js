@@ -10,22 +10,27 @@
 var fixie = (
 
 function () {
-if (typeof window.getElementsByClassName != 'function') {
-    document.getElementsByClassName = function (cl) {
-        var retnode = [];
-        var myclass = new RegExp('\\b' + cl + '\\b');
-        var elem = this.getElementsByTagName('*');
-        for (var i = 0; i < elem.length; i++) {
-            var classes = elem[i].className;
-            if (myclass.test(classes)) retnode.push(elem[i]);
-        }
-        return retnode;
-    };
-}
+
+    if (typeof window.getElementsByClassName != 'function') {
+        document.getElementsByClassName = function (cl) {
+            var retnode = [];
+            var myclass = new RegExp('\\b' + cl + '\\b');
+            var elem = this.getElementsByTagName('*');
+            for (var i = 0; i < elem.length; i++) {
+                var classes = elem[i].className;
+                if (myclass.test(classes)) retnode.push(elem[i]);
+            }
+            return retnode;
+        };
+    }
+
     /* 
      * Spec
      * Here are some functions you might find useful
      * 
+     * fixie_handler(element)
+     * fixie_handle_elements(elements)
+     *
      * fixie_fetchWord();
      * fixie_fetchPhrase();
      * fixie_fetchSentence();
@@ -42,6 +47,15 @@ if (typeof window.getElementsByClassName != 'function') {
      * Returns false if tag is unrecognized.
      */
     function fixie_handler(element) {
+        if (element.innerHTML!=""){
+            var childs = element.children;
+            if(childs.length){
+                for(var fixie_i = 0; fixie_i < childs.length; fixie_i++){
+                    fixie_handler(childs[fixie_i]);
+                }
+            }
+            return true;
+        }
         switch (element.nodeName.toLowerCase()) {
         case 'b':
         case 'em':
@@ -86,7 +100,6 @@ if (typeof window.getElementsByClassName != 'function') {
 
         case 'article':
         case 'section':
-
             element.innerHTML = fixie_fetchParagraphs()
             break;
 
@@ -117,7 +130,15 @@ if (typeof window.getElementsByClassName != 'function') {
         return true;
     }
 
+    // Handle an array of elements
+    function fixie_handle_elements(elements){
+        for (var i = 0; i < elements.length; i++) {
+            fixie_handler(elements[i]);
+        }
+    }
 
+
+    // Begin generator
     var fixie_wordlibrary = ["I", "8-bit", "ethical", "reprehenderit", "delectus", "non", "latte", "fixie", "mollit", "authentic", "1982", "moon", "helvetica", "dreamcatcher", "esse", "vinyl", "nulla", "Carles", "bushwick", "bronson", "clothesline", "fin", "frado", "jug", "kale", "organic", "local", "fresh", "tassel", "liberal", "art", "the", "of", "bennie", "chowder", "daisy", "gluten", "hog", "capitalism", "is", "vegan", "ut", "farm-to-table", "etsy", "incididunt", "sunt", "twee", "yr", "before", "gentrify", "whatever", "wes", "Anderson", "chillwave", "dubstep", "sriracha", "voluptate", "pour-over", "esse", "trust-fund", "Pinterest", "Instagram", "DSLR", "vintage", "dumpster", "totally", "selvage", "gluten-free", "brooklyn", "placeat", "delectus", "sint", "magna", "brony", "pony", "party", "beer", "shot", "narwhal", "salvia", "letterpress", "art", "party", "street-art", "seitan", "anime", "wayfarers", "non-ethical", "viral", "iphone", "anim", "polaroid", "gastropub", "city", 'classy', 'original', 'brew']
 
     function fixie_capitalize(string) {
@@ -162,35 +183,19 @@ if (typeof window.getElementsByClassName != 'function') {
         }
         return fixie_str;
     }
+    
 
 
+    // Handle all elements with class 'fixie'
+    fixie_handle_elements(document.getElementsByClassName('fixie'));
 
-    var className = "fixie";
-    fixit(document.getElementsByClassName(className));
-
-    function fixit(elements){
-
-        for (var fixie_i = 0, l = elements.length; fixie_i < l; fixie_i++) {
-            var element = elements[fixie_i];
-            var childs = element.children;
-            if(childs.length){
-                fixit(childs);
-            }else{
-                fixie_handler(element);
-            }
-        }
-    }
-
+    // Handle elements which match give css selectors
     function init_str(selector_str) {
         if (!document.querySelectorAll) {
             return false;
         }
-
         try {
-            var element_list = document.querySelectorAll(selector_str);
-            for (var i = 0; i < element_list.length; i++) {
-                fixie_handler(element_list[i]);
-            }
+            fixie_handle_elements(document.querySelectorAll(selector_str));
             return true;
         } 
         catch (err) {
