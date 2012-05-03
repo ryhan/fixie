@@ -4,7 +4,7 @@ Fixie is an open source tool that that automatically adds filler content to HTML
 
 To learn more, check out  [fixiejs.com](http://www.fixiejs.com "fixiejs") 
 
-## Why use Fixie?
+### Why use Fixie?
 When designing and developing websites, it's often useful to add lorem ipsum text to see what your page will look like without worrying about your final content.
 
 Unfortunately, adding lots of filler content involves lots of copy-pasting and manual editing, and also makes your HTML unwieldy.
