@@ -166,9 +166,19 @@ if (typeof window.getElementsByClassName != 'function') {
 
 
     var className = "fixie";
-    var to_be_fixied = document.getElementsByClassName(className);
-    for (var fixie_i = 0; fixie_i < to_be_fixied.length; fixie_i++) {
-        fixie_handler(to_be_fixied[fixie_i]);
+    fixit(document.getElementsByClassName(className));
+
+    function fixit(elements){
+
+        for (var fixie_i = 0, l = elements.length; fixie_i < l; fixie_i++) {
+            var element = elements[fixie_i];
+            var childs = element.children;
+            if(childs.length){
+                fixit(childs);
+            }else{
+                fixie_handler(element);
+            }
+        }
     }
 
 })();
