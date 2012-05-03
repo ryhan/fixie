@@ -36,7 +36,7 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 
 ## Tips
 ### Specify a class name other than fixie
-Just call `fixie(classname);`
+Just call `fixie("swappy");`
 
 ### Flagging filler content
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:
