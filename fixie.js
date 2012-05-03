@@ -125,41 +125,37 @@ if (typeof window.getElementsByClassName != 'function') {
     }
 
     function fixie_fetchWord() {
-        return fixie_wordlibrary[Math.round(Math.random() * (fixie_wordlibrary.length - 1))];
+        return fixie_wordlibrary[constrain(0, fixie_wordlibrary.length - 1 )];
+    }
+
+    function constrain(min, max){
+        return Math.round(Math.random() * (max - min) + min)
+    }
+
+    function fixie_fetch(min, max, func){
+        var fixie_length = constrain(min, max) - 1;
+        var fixie_str = "";
+        for (var fixie_i = 0; fixie_i < fixie_length ; fixie_i++) {
+            fixie_str += func() + " ";
+        }
+        fixie_str += func();
+        return fixie_capitalize(fixie_str);
     }
 
     function fixie_fetchPhrase() {
-        var fixie_length = Math.round(Math.random() * 2 + 3);
-        var fixie_str = "";
-        for (var fixie_i = 0; fixie_i < fixie_length - 1; fixie_i++) {
-            fixie_str += fixie_fetchWord() + " ";
-        }
-        fixie_str += fixie_fetchWord();
-        return fixie_capitalize(fixie_str);
+        return fixie_fetch(3, 5, fixie_fetchWord);
     }
 
     function fixie_fetchSentence() {
-        var fixie_length = Math.round(Math.random() * 5 + 4);
-        var fixie_str = "";
-        for (var fixie_i = 0; fixie_i < fixie_length - 1; fixie_i++) {
-            fixie_str += fixie_fetchWord() + " ";
-        }
-        fixie_str += fixie_fetchWord() + ".";
-        return fixie_capitalize(fixie_str);
+        return fixie_fetch(4, 9, fixie_fetchWord) + '.';
     }
 
     function fixie_fetchParagraph() {
-        var fixie_length = Math.round(Math.random() * 4 + 3);
-        var fixie_str = "";
-        for (var fixie_i = 0; fixie_i < fixie_length - 1; fixie_i++) {
-            fixie_str += fixie_fetchSentence() + " ";
-        }
-        fixie_str += fixie_fetchSentence();
-        return fixie_capitalize(fixie_str);
+        return fixie_fetch(3, 7, fixie_fetchSentence);
     }
 
     function fixie_fetchParagraphs() {
-        var fixie_length = Math.round(Math.random() * 4 + 3);
+        var fixie_length = constrain(3, 7);
         var fixie_str = "";
         for (var fixie_i = 0; fixie_i < fixie_length - 1; fixie_i++) {
             fixie_str += "<p>" + fixie_fetchParagraph() + "</p>";
