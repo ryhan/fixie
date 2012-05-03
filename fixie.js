@@ -10,7 +10,7 @@
 (
 
 function () {
-    if (typeof window.myFunction != 'function') {
+    if (typeof window.getElementsByClassName != 'function') {
         document.getElementsByClassName = function (cl) {
             var retnode = [];
             var myclass = new RegExp('\\b' + cl + '\\b');
@@ -166,8 +166,6 @@ function () {
         }
         return fixie_str;
     }
-
-
 
     var className = "fixie";
     var to_be_fixied = document.getElementsByClassName(className);
