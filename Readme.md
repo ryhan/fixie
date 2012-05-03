@@ -35,8 +35,6 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 - `<a class="fixie"></a>` - Adds a randomly named link.
 
 ## Tips
-### `fixie();`
-Calling `fixie();` will make fixie.js update elements with class `fixie`. This is useful when you want to dynamically insert content.
 
 ### Flagging filler content
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:
@@ -44,4 +42,18 @@ When you start adding real copy to your page, try adding the following CSS to yo
 `.fixie{ border:4px solid red; }`
 
 This CSS will highlight all of your dummy content, making it easier to make sure you didn't miss anything.
+
+### Special functions
+#### `fixie();`
+Calling `fixie();` will make fixie.js update elements with class `fixie`. This is useful when you want to dynamically insert content.
+####  `fixie_fetchWord();`
+Returns a word.
+####  `fixie_fetchPhrase();`
+Returns several words.
+#### `fixie_fetchSentence();`
+Returns several words, followed by a period.
+#### `fixie_fetchParagraph();`
+Returns several sentences.
+#### `fixie_fetchParagraphs();`
+Returns several paragraphs.
 
