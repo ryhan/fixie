@@ -17,26 +17,24 @@ Unfortunately, adding lots of filler content involves lots of copy-pasting and m
 
 Add `<script type="text/javascript" src="fixie.js"></script>` to the bottom of your html document, right before your closing `</body>` tag.
 
-### Step 2 - Add the `fixie` class.
+### Step 2 - Add the `data-fixie` atrribute and set it to true. `data-fixie="true"`
 
-Wherever you need filler content, set `class="fixie"`.
+Wherever you need filler content, add `data-fixie="true"`.
 
 For example, if you wanted one filler paragraph, you could use
-`<p class="fixie"></p>`
+`<p data-fixie="true"></p>`
 
 ## Supported Elements
 Fixie inserts the right type of content based on the tag name. Here are some major types you should be aware of:
 
-- `<h1 class="fixie"></h1>` - Adds a few words of text. Same goes for `h2 - h6`
-- `<p class="fixie"></p>` - Adds a paragraph of text.
-- `<article class="fixie"></article>` - Adds several paragraphs of text.
-- `<section class="fixie"></section>` - Adds several paragraphs of text.
-- `<img class="fixie"></img>` - Adds an image which displays the width and height of the image.
-- `<a class="fixie"></a>` - Adds a randomly named link.
+- `<h1 data-fixie="true"></h1>` - Adds a few words of text. Same goes for `h2 - h6`
+- `<p data-fixie="true"></p>` - Adds a paragraph of text.
+- `<article data-fixie="true"></article>` - Adds several paragraphs of text.
+- `<section data-fixie="true"></section>` - Adds several paragraphs of text.
+- `<img data-fixie="true"></img>` - Adds an image which displays the width and height of the image.
+- `<a data-fixie="true"></a>` - Adds a randomly named link.
 
 ## Tips
-### Specify a class name other than fixie
-Just call `fixie("swappy");`
 
 ### Flagging filler content
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:
@@ -46,8 +44,7 @@ When you start adding real copy to your page, try adding the following CSS to yo
 This CSS will highlight all of your dummy content, making it easier to make sure you didn't miss anything.
 
 ### Special functions
-#### `fixie();`
-Calling `fixie();` will make fixie.js update elements with class `fixie`. This is useful when you want to dynamically insert content.
+you want to dynamically insert content.
 ####  `fixie_fetchWord();`
 Returns a word.
 ####  `fixie_fetchPhrase();`
@@ -58,4 +55,3 @@ Returns several words, followed by a period.
 Returns several sentences.
 #### `fixie_fetchParagraphs();`
 Returns several paragraphs.
-
