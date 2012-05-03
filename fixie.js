@@ -10,7 +10,7 @@
 (
 
 function () {
-if (typeof window.myFunction != 'function') {
+if (typeof window.getElementsByClassName != 'function') {
     document.getElementsByClassName = function (cl) {
         var retnode = [];
         var myclass = new RegExp('\\b' + cl + '\\b');
