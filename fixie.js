@@ -189,3 +189,5 @@ function fixie_fetchParagraphs(){
 	return fixie_str;
 }
 
+fixie();
+
