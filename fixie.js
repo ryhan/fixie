@@ -110,8 +110,8 @@ function () {
             break;
 
         case 'img':
-            var width = element.width || (element.width = 250);
-            var height = element.height || (element.height = 100);
+            var width = element.getAttribute('width') || (element.getAttribute('width') = 250);
+            var height = element.getAttribute('height') || (element.getAttribute('height') = 100);
             element.src = "http://placehold.it/" + width + "x" + height;
             break;
 
