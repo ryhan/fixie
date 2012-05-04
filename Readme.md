@@ -24,13 +24,21 @@ Wherever you need filler content, set `class="fixie"`.
 For example, if you wanted one filler paragraph, you could use
 `<p class="fixie"></p>`
 
-### Step 2 - Alternatives
+## Supported Elements
+Fixie inserts the right type of content based on the tag name. Here are some major types you should be aware of:
 
-#### `fixie.init()`
+- `<h1 class="fixie"></h1>` - Adds a few words of text. Same goes for `h2 - h6`
+- `<p class="fixie"></p>` - Adds a paragraph of text.
+- `<article class="fixie"></article>` - Adds several paragraphs of text.
+- `<section class="fixie"></section>` - Adds several paragraphs of text.
+- `<img class="fixie"></img>` - Adds an image which displays the width and height of the image.
+- `<a class="fixie"></a>` - Adds a randomly named link.
+
+## Fixie.init()
 
 `fixie.init()` gives you fine-grained control over what fixie targets.
 
-##### selector
+### selector
 Select where you want filler content using CSS selectors.
 
 Call
@@ -43,23 +51,13 @@ fixie.init({selector:".string, #of > .comma, .separated, .selectors, .that, .sho
 ```
 in the JavaScript console or within a `<script>` tag.
 
-##### imagePlaceHolder
+### imagePlaceHolder
 Use a different image placeholder service. By default, fixie uses http://placehold.it.
 
 For example, to set the image placeholder to flickrholder.com, call
 ```
 fixie.init({imagePlaceHolder: 'http://flickholdr.com/${w}/${h}/dslr'}) 
 ```
-
-## Supported Elements
-Fixie inserts the right type of content based on the tag name. Here are some major types you should be aware of:
-
-- `<h1 class="fixie"></h1>` - Adds a few words of text. Same goes for `h2 - h6`
-- `<p class="fixie"></p>` - Adds a paragraph of text.
-- `<article class="fixie"></article>` - Adds several paragraphs of text.
-- `<section class="fixie"></section>` - Adds several paragraphs of text.
-- `<img class="fixie"></img>` - Adds an image which displays the width and height of the image.
-- `<a class="fixie"></a>` - Adds a randomly named link.
 
 ## Tips
 
