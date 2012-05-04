@@ -24,11 +24,11 @@ Wherever you need filler content, set `class="fixie"`.
 For example, if you wanted one filler paragraph, you could use
 `<p class="fixie"></p>`
 
-### Step 2 - Alternatively use fixie.init
+### Step 2 - Alternatively use `fixie.init`
 
 Select where you want filler content using CSS selectors.
 
-#### Call
+Call
 ```
 fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"]) 
 ```
@@ -38,7 +38,6 @@ fixie.init(".string, #of > .comma, .separated, .selectors, .that, .should, #be >
 ```
 in the JavaScript console or within a `<script>` tag.
 
-#### Tip
 You can call Fixie on all empty elements on a page by calling:
 ```
 fixie.init(':empty')
