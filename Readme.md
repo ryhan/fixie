@@ -35,11 +35,12 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 - `<a class="fixie"></a>` - Adds a randomly named link.
 
 ## Fixie.init()
-
-`fixie.init()` gives you fine-grained control over what fixie targets.
+Options
+- selector
+- imagePlaceHolder
 
 ### selector
-Select where you want filler content using CSS selectors.
+Instead of using classes, select where you want filler content using CSS selectors.
 
 Call
 ```
