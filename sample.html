@@ -20,21 +20,32 @@
 </head>
 <body>
 	<article>
-		<h1 class="fixie"></h1>
-		<p> Check us out at <a class="fixie"></a></p>
-		<section class="fixie">
+		<h1></h1>
+		<p class="fixie"> Check us out at <a></a></p>
+		<section>
 			<p>Don't forget to view source.</p>
 			<p></p>
 			<img/>
 			<p></p>
 			<p></p>
 		</section>
-		<h2 class="fixie"></h2>
-		<section class="fixie"></section>
+		<h2 class="fixiea"></h2>
+		<section></section>
 	</article>
 
-<script type="text/javascript" src="fixie.js"></script>
+	<script type="text/javascript" src="fixie.js"></script>
 
+	<!-- fixie.init() is an optional configuration method -->
+	<script>
+		fixie.init({
+
+			// apply fixie to <h1> and <section>
+			selector:["h1, section"],
+
+			// change default image source to flickr
+			imagePlaceHolder: 'http://flickholdr.com/${w}/${h}/dslr'
+		});
+	</script>
+	
 </body>
 </html>
-

@@ -24,23 +24,31 @@ Wherever you need filler content, set `class="fixie"`.
 For example, if you wanted one filler paragraph, you could use
 `<p class="fixie"></p>`
 
-### Step 2 - Alternatively use `fixie.init`
+### Step 2 - Alternatives
 
+#### `fixie.init()`
+
+`fixie.init()` gives you fine-grained control over what fixie targets.
+
+##### selector
 Select where you want filler content using CSS selectors.
 
 Call
 ```
-fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"]) 
+fixie.init({selector:[".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"]}) 
 ```
 or 
 ```
-fixie.init(".string, #of > .comma, .separated, .selectors, .that, .should, #be > .populated, .with, .lorem")
+fixie.init({selector:".string, #of > .comma, .separated, .selectors, .that, .should, #be > .populated, .with, .lorem"})
 ```
 in the JavaScript console or within a `<script>` tag.
 
-You can call Fixie on all empty elements on a page by calling:
+##### imagePlaceHolder
+Use a different image placeholder service. By default, fixie uses http://placehold.it.
+
+For example, to set the image placeholder to flickrholder.com, call
 ```
-fixie.init(':empty')
+fixie.init({imagePlaceHolder: 'http://flickholdr.com/${w}/${h}/dslr'}) 
 ```
 
 ## Supported Elements
@@ -67,6 +75,13 @@ Consider the following example:
 ```
 Fixie will preserve the "Hello" text, but will
 automatically add content to the link.
+
+### Target empty elements
+You can call Fixie on all empty elements on a page by calling:
+```
+fixie.init({selector:':empty'})
+```
+or by setting `<body class="fixie">`
 
 ### Flagging filler content
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:

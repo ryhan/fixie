@@ -8,7 +8,6 @@
  * Hope you find it useful :)
  */ 
 var fixie = (
-
 function () {
 
     if (typeof window.getElementsByClassName != 'function') {
@@ -23,6 +22,8 @@ function () {
             return retnode;
         };
     }
+
+    var imagePlaceHolder = "http://placehold.it/${w}x${h}"
 
     /* 
      * Spec
@@ -110,12 +111,13 @@ function () {
             break;
 
         case 'img':
-            var width = element.getAttribute('height') || element.setAttribute('width', 250) || 250;
-            var height = element.getAttribute('height') || element.setAttribute('height', 100) || 100;
-            element.src = "http://placehold.it/" + width + "x" + height;
+            var width = element.getAttribute('width') || (element.width = 250);
+            var height = element.getAttribute('height') || (element.height = 100);
+            element.src = imagePlaceHolder.replace('${w}', width).replace('${h}', height);
             break;
 
         default:
+            element.innerHTML = fixie_fetchSentence();
             element.innerHTML = fixie_fetchSentence();
             return false;
         }
@@ -181,6 +183,8 @@ function () {
     fixie_handle_elements(document.getElementsByClassName('fixie'));
 
     // Handle elements which match give css selectors
+
+
     function init_str(selector_str) {
         if (!document.querySelectorAll) {
             return false;
@@ -195,13 +199,18 @@ function () {
     }
 
     return {
-        /* returns true if successful, false otherwise */
-        'init': function(strOrArr) {
+        // returns true if successful, false otherwise 
+        'init': function(options) {
+            var strOrArr = options.selector;
+            !options.imagePlaceHolder || (imagePlaceHolder = options.imagePlaceHolder);
+
             if (typeof strOrArr === "object") {
                 return init_str(strOrArr.join(","));
             }
-            else {
+            else if (strOrArr){
                 return init_str(strOrArr);
+            } else {
+                fixie_handle_elements(document.getElementsByClassName('fixie'));
             }
         }
     };
