@@ -112,9 +112,14 @@ function () {
             break;
 
         case 'img':
-            var width = element.getAttribute('width') || element.width || (element.width = 250);
-            var height = element.getAttribute('height') || element.height || (element.height = 100);
-            element.src = imagePlaceHolder.replace('${w}', width).replace('${h}', height);
+            var src = element.getAttribute('src') || element.src;
+            var temp = element.getAttribute('fixie-temp-img');
+            if(src == "" || src == null || temp == true || temp == "true"){
+                var width = element.getAttribute('width') || element.width || (element.width = 250);
+                var height = element.getAttribute('height') || element.height || (element.height = 100);
+                element.src = imagePlaceHolder.replace('${w}', width).replace('${h}', height);
+                element.setAttribute('fixie-temp-img', true);
+            }
             break;
 
         case 'ol':
