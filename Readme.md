@@ -76,6 +76,9 @@ Consider the following example:
 Fixie will preserve the "Hello" text, but will
 automatically add content to the link.
 
+### Fixie for Rails
+[fixie-rails](https://github.com/csexton/fixie-rails)
+
 ### Flagging filler content
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:
 
