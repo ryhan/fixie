@@ -55,6 +55,14 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 
 ## Tips
 
+### Change the default image placeholder service
+Use `fixie.setImagePlaceholder(source)`.
+
+For example, to pull images from Flickr using http://flickholdr.com/, call
+```
+fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init();
+```
+
 ### Add class fixie to containers
 Fixxie will act on all child elements, but will never 
 overwrite content within an element.
