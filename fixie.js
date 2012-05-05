@@ -8,8 +8,10 @@
  * Hope you find it useful :)
  */ 
 var fixie = (
-
 function () {
+
+    var selector;
+    var imagePlaceHolder = "http://placehold.it/${w}x${h}";
 
     if (typeof window.getElementsByClassName != 'function') {
         document.getElementsByClassName = function (cl) {
@@ -54,7 +56,7 @@ function () {
                     fixie_handler(childs[fixie_i]);
                 }
             }
-            return true;
+            return;
         }
         switch (element.nodeName.toLowerCase()) {
         case 'b':
@@ -110,16 +112,14 @@ function () {
             break;
 
         case 'img':
-            var width = element.getAttribute('height') || element.setAttribute('width', 250) || 250;
-            var height = element.getAttribute('height') || element.setAttribute('height', 100) || 100;
-            element.src = "http://placehold.it/" + width + "x" + height;
+            var width = element.getAttribute('width') || element.width || (element.width = 250);
+            var height = element.getAttribute('height') || element.height || (element.height = 100);
+            element.src = imagePlaceHolder.replace('${w}', width).replace('${h}', height);
             break;
 
         default:
             element.innerHTML = fixie_fetchSentence();
-            return false;
         }
-        return true;
     }
 
     // Handle an array of elements
@@ -175,12 +175,12 @@ function () {
         return fixie_str;
     }
     
-
-
     // Handle all elements with class 'fixie'
     fixie_handle_elements(document.getElementsByClassName('fixie'));
 
     // Handle elements which match give css selectors
+
+
     function init_str(selector_str) {
         if (!document.querySelectorAll) {
             return false;
@@ -196,13 +196,24 @@ function () {
 
     return {
         /* returns true if successful, false otherwise */
-        'init': function(strOrArr) {
-            if (typeof strOrArr === "object") {
-                return init_str(strOrArr.join(","));
+        'init': function() {
+            if (selector) {
+                init_str(selector);
+            } else {
+                fixie_handle_elements(document.getElementsByClassName('fixie'));
             }
-            else {
-                return init_str(strOrArr);
-            }
+        },
+        'setImagePlaceholder': function(pl) {
+            imagePlaceHolder = pl;
+            return this;
+        },
+        'setSelector': function(sl){
+            if (typeof sl === "object") {
+                selector = sl.join(",");
+            } else if (sl){
+                selector = sl;
+            } 
+            return this;
         }
     };
 
