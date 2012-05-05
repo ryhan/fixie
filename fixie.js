@@ -56,6 +56,7 @@ function () {
                     fixie_handler(childs[fixie_i]);
                 }
             }
+            return;
         }
         switch (element.nodeName.toLowerCase()) {
         case 'b':
@@ -111,8 +112,8 @@ function () {
             break;
 
         case 'img':
-            var width = element.getAttribute('width') || element.style.width || (element.width = 250);
-            var height = element.getAttribute('height') || element.style.height || (element.height = 100);
+            var width = element.getAttribute('width') || element.width || (element.width = 250);
+            var height = element.getAttribute('height') || element.height || (element.height = 100);
             element.src = imagePlaceHolder.replace('${w}', width).replace('${h}', height);
             break;
 
@@ -196,7 +197,6 @@ function () {
     return {
         /* returns true if successful, false otherwise */
         'init': function() {
-            console.log(selector)
             if (selector) {
                 init_str(selector);
             } else {

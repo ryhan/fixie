@@ -10,8 +10,8 @@
 			margin:150px auto;
 		}
 		img{
-			width:300px;
-			height:200px;
+			width:600px;
+			height:400px;
 			float:right;
 			margin:20px;
 		}
@@ -22,7 +22,7 @@
 	<article>
 		<h1 class="fixie"></h1>
 		<p> Check us out at <a class="fixie"></a></p>
-		<section>
+		<section class="fixie">
 			<p>Don't forget to view source.</p>
 			<p></p>
 			<img/>
@@ -35,7 +35,7 @@
 
 	<script type="text/javascript" src="fixie.js"></script>
 	<script>
-		fixie.setSelector('img, p').setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init();
+		fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init();
 	</script>
 </body>
 </html>
