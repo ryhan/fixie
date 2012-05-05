@@ -115,6 +115,11 @@ function () {
             element.src = "http://placehold.it/" + width + "x" + height;
             break;
 
+        case 'ol':
+        case 'ul':
+            element.innerHTML = fixie_fetchList();
+            break;
+
         default:
             element.innerHTML = fixie_fetchSentence();
             return false;
@@ -173,6 +178,16 @@ function () {
             fixie_str += "<p>" + fixie_fetchParagraph() + "</p>";
         }
         return fixie_str;
+    }
+
+    function fixie_fetchList() {
+      var i, n = Math.random() * 4 + 4, list = [];
+
+      for(i = 0; i < n; i++) {
+        list.push(fixie_fetchPhrase());
+      }
+
+      return '<li>' + list.join('</li><li>') + '</li>';
     }
     
 
