@@ -10,6 +10,9 @@
 var fixie = (
 function () {
 
+    var selector;
+    var imagePlaceHolder = "http://placehold.it/${w}x${h}";
+
     if (typeof window.getElementsByClassName != 'function') {
         document.getElementsByClassName = function (cl) {
             var retnode = [];
@@ -22,8 +25,6 @@ function () {
             return retnode;
         };
     }
-
-    var imagePlaceHolder = "http://placehold.it/${w}x${h}"
 
     /* 
      * Spec
@@ -55,7 +56,6 @@ function () {
                     fixie_handler(childs[fixie_i]);
                 }
             }
-            return true;
         }
         switch (element.nodeName.toLowerCase()) {
         case 'b':
@@ -118,10 +118,7 @@ function () {
 
         default:
             element.innerHTML = fixie_fetchSentence();
-            element.innerHTML = fixie_fetchSentence();
-            return false;
         }
-        return true;
     }
 
     // Handle an array of elements
@@ -177,8 +174,6 @@ function () {
         return fixie_str;
     }
     
-
-
     // Handle all elements with class 'fixie'
     fixie_handle_elements(document.getElementsByClassName('fixie'));
 
@@ -200,19 +195,25 @@ function () {
 
     return {
         /* returns true if successful, false otherwise */
-        'init': function(options) {
-            var strOrArr = options.selector;
-            !options.imagePlaceHolder || (imagePlaceHolder = options.imagePlaceHolder);
-            console.log(imagePlaceHolder)
-            
-            if (typeof strOrArr === "object") {
-                return init_str(strOrArr.join(","));
-            }
-            else if (strOrArr){
-                return init_str(strOrArr);
+        'init': function() {
+            console.log(selector)
+            if (selector) {
+                init_str(selector);
             } else {
                 fixie_handle_elements(document.getElementsByClassName('fixie'));
             }
+        },
+        'setImagePlaceholder': function(pl) {
+            imagePlaceHolder = pl;
+            return this;
+        },
+        'setSelector': function(sl){
+            if (typeof sl === "object") {
+                selector = sl.join(",");
+            } else if (sl){
+                selector = sl;
+            } 
+            return this;
         }
     };
 
