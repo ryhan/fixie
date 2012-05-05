@@ -181,13 +181,11 @@ function () {
     }
 
     function fixie_fetchList() {
-      var i, n = Math.random() * 4 + 4, list = [];
-
-      for(i = 0; i < n; i++) {
-        list.push(fixie_fetchPhrase());
-      }
-
-      return '<li>' + list.join('</li><li>') + '</li>';
+        var i, n = Math.random() * 4 + 4, list = [];
+        for(i = 0; i < n; i++) {
+            list.push(fixie_fetchPhrase());
+        }
+        return '<li>' + list.join('</li><li>') + '</li>';
     }
     
     // Handle all elements with class 'fixie'
