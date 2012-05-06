@@ -155,13 +155,20 @@ function () {
         return Math.round(Math.random() * (max - min) + min)
     }
 
-    function fixie_fetch(min, max, func){
-        var fixie_length = constrain(min, max) ;
+    function fixie_fetch(min, max, func, join) {
+        join || (join = ' ');
+        var fixie_length = constrain(min, max);
         var result = [];
-        for (var fixie_i = 0; fixie_i < fixie_length ; fixie_i++) {
+        for (var fixie_i = 0; fixie_i < fixie_length; fixie_i++) {
             result.push(func());
         }
-        return fixie_capitalize(result.join(' '));
+        return fixie_capitalize(result.join(join));
+    }
+
+    function fetch_suroundWithTag(min, max, func, tagName) {
+        var startTag = '<' + tagName + '>';
+        var endTag = '</' + tagName + '>';
+        return startTag + fixie_fetch(4, 8, func, endTag + startTag) + endTag;
     }
 
     function fixie_fetchPhrase() {
@@ -177,22 +184,13 @@ function () {
     }
 
     function fixie_fetchParagraphs() {
-        var fixie_length = constrain(3, 7);
-        var fixie_str = "";
-        for (var fixie_i = 0; fixie_i < fixie_length - 1; fixie_i++) {
-            fixie_str += "<p>" + fixie_fetchParagraph() + "</p>";
-        }
-        return fixie_str;
+        return fetch_suroundWithTag(3, 7, fixie_fetchParagraph, 'p');
     }
 
     function fixie_fetchList() {
-        var i, n = Math.random() * 4 + 4, list = [];
-        for(i = 0; i < n; i++) {
-            list.push(fixie_fetchPhrase());
-        }
-        return '<li>' + list.join('</li><li>') + '</li>';
+        return fetch_suroundWithTag(4, 8, fixie_fetchPhrase, 'li');
     }
-    
+   
     // Handle all elements with class 'fixie'
     fixie_handle_elements(document.getElementsByClassName('fixie'));
 
