@@ -165,7 +165,7 @@ function () {
         return fixie_capitalize(result.join(join));
     }
 
-    function fectch_suroundWithTag(min, max, func, tagName) {
+    function fetch_suroundWithTag(min, max, func, tagName) {
         var startTag = '<' + tagName + '>';
         var endTag = '</' + tagName + '>';
         return startTag + fixie_fetch(4, 8, func, endTag + startTag) + endTag;
@@ -184,11 +184,11 @@ function () {
     }
 
     function fixie_fetchParagraphs() {
-        return fectch_suroundWithTag(3, 7, fixie_fetchParagraph, 'p');
+        return fetch_suroundWithTag(3, 7, fixie_fetchParagraph, 'p');
     }
 
     function fixie_fetchList() {
-        return fectch_suroundWithTag(4, 8, fixie_fetchPhrase, 'li');
+        return fetch_suroundWithTag(4, 8, fixie_fetchPhrase, 'li');
     }
    
     // Handle all elements with class 'fixie'
