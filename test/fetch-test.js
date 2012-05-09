@@ -7,41 +7,94 @@ buster.assertions.add("isBetween", {
     assertMessage: "Expected ${2} to belower ${0} and larger ${1}!",
 });
 
-describe("should fill ", function () {
+var random = Math.random;
+
+describe("fixie minimal", function () {
+   
+    before(function(){
+        Math.random = function(){return 0};
+    });
+
+    after(function(){
+        Math.random = random;
+    });
 
     ['b','em','strong','button','th','td','title','tr'].forEach(function(tagName){
 
-        it("&lt;" + tagName + "&gt; with one word", function () {
+        it("should fill a &lt;" + tagName + "&gt; with 1 word", function () {
              createElementAndTestWordCount(tagName, isSame(1));
         }); 
     });
 
+
+        
     ['header', 'cite', 'caption', 'mark', 'q', 's', 'u', 'small', 'span', 'code', 'pre', 'li', 'dt', 'h1', 'h2', 'h3', 'h4',  'h5', 'h6'].forEach(function(tagName){
 
-        it("&lt;" + tagName + "&gt; with 3 - 5 words", function () {
-             createElementAndTestWordCount(tagName, isBetween(3, 5));
+        it("should fill a &lt;" + tagName + "&gt; with  3 words", function () {
+             createElementAndTestWordCount(tagName, isSame(3));
         });
     });
 
     ['footer', 'aside', 'summary', 'blockquote', 'p'].forEach(function(tagName){
 
-        it("&lt;" + tagName + "&gt; with 3-7 sentences  with 3-5 words", function () {
-             createElementAndTestSentecesAndWordCount(tagName, isBetween(3, 7), isBetween(4, 9));
+        it("should fill a &lt;" + tagName + "&gt; with  3 sentences  with 3 words", function () {
+             createElementAndTestSentecesAndWordCount(tagName, isSame(3), isSame(4));
         });
     });
 
     ['article', 'section'].forEach(function(tagName){
 
-        it("&lt;" + tagName + "&gt; with 3-7 paragraphs with 3-7 sentences  with 3-5 words", function () {
-             createElementAndTestParagraphAndSentecesAndWordCount(tagName, isBetween(3, 7), isBetween(3, 7), isBetween(4, 9));
+        it("should fill a &lt;" + tagName + "&gt; with  3 paragraphs with 3 sentences  with 3 words" + tagName + "&gt;", function () {
+             createElementAndTestParagraphAndSentecesAndWordCount(tagName, isSame(3), isSame(3), isSame(4));
         });
-    })
+    });
+});
+
+describe("fixie maximal", function () {
+
+    before(function(){
+        Math.random = function(){return 1};
+    });
+
+    after(function(){
+        Math.random = random;
+    });
+        
+        ['header', 'cite', 'caption', 'mark', 'q', 's', 'u', 'small', 'span', 'code', 'pre', 'li', 'dt', 'h1', 'h2', 'h3', 'h4',  'h5', 'h6'].forEach(function(tagName){
+
+            it("should fill a &lt;" + tagName + "&gt; with  5 words", function () {
+                 createElementAndTestWordCount(tagName, isSame(7));
+            });
+        });
+
+        ['footer', 'aside', 'summary', 'blockquote', 'p'].forEach(function(tagName){
+
+            it("should fill a &lt;" + tagName + "&gt; with  7 sentences  with 9 words", function () {
+                 createElementAndTestSentecesAndWordCount(tagName, isSame(7), isSame(9));
+            });
+        });
+
+        ['article', 'section'].forEach(function(tagName){
+
+            it("should fill a &lt;" + tagName + "&gt; with  7 paragraphs with 7 sentences  with 9 words", function () {
+                 createElementAndTestParagraphAndSentecesAndWordCount(tagName, isSame(7), isSame(7), isSame(9));
+            });
+        });
+
 
 });
 
-function isBetween(min, max) {
-    return function(actual) {assert.isBetween(min, max, actual);}
-}
+describe('fixie', function()
+{
+     it('should handle sub childs', function () {
+        var el = createElementAndInitFixie ('div');
+        el.innerHTML = '<div><header/></div>';
+        fixie.init();
+        isBetween(3,5)(el.firstChild.firstChild.innerHTML.split(' ').length);
+        el.parentNode.removeChild(el);
+
+    });
+});
 
 function isSame(excpected){
     return function(actual) {assert(excpected, actual)};
