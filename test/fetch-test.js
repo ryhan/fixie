@@ -49,13 +49,25 @@ describe("fixie minimal", function () {
         });
     });
 
-    ['hr'].forEach(function(tagName){
+    it("should fill a &lt;dl&gt; with  a pair of 3 dt/dd", function () {
+        var el = createElementAndInitFixie('dl');
+        assert.same(3, el.getElementsByTagName('dd').length);
+        assert.same(3, el.getElementsByTagName('dt').length);
+        el.parentNode.removeChild(el);
+    });
 
-        it("should not fill a &lt;" + tagName + "&gt;", function () {
+
+    it("should not fill a &lt;hr&gt;", function () {
+        var el = createElementAndInitFixie('hr');
+        assert.same('', el.innerHTML);
+        el.parentNode.removeChild(el);
+    });
+
+     ['ol', 'ul'].forEach(function(tagName){
+        it("should fill a &lt;" + tagName + "&gt; with  4 li", function () {
             var el = createElementAndInitFixie(tagName);
-            assert.same('', el.innerHTML);
+            assert.same(el.getElementsByTagName('li').length, 4);
             el.parentNode.removeChild(el);
-              
         });
     });
 });
@@ -90,6 +102,24 @@ describe("fixie maximal", function () {
                  createElementAndTestParagraphAndSentecesAndWordCount(tagName, isSame(7), isSame(7), isSame(9));
             });
         });
+
+
+    it("should fill a &lt;dl&gt; with  a pair of 5 dt/dd", function () {
+        var el = createElementAndInitFixie('dl');
+                console.log(el.getElementsByTagName('dd'))
+        console.log(el.getElementsByTagName('dt'))
+        assert.same(el.getElementsByTagName('dd').length, 5);
+        assert.same(el.getElementsByTagName('dt').length, 5);
+        el.parentNode.removeChild(el);
+    });
+
+    ['ol', 'ul'].forEach(function(tagName){
+        it("should fill a &lt;" + tagName + "&gt; with  8 li", function () {
+            var el = createElementAndInitFixie(tagName);
+            assert.same(el.getElementsByTagName('li').length, 8);
+            el.parentNode.removeChild(el);
+        });
+    });
 });
 
 
