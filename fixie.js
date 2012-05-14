@@ -127,6 +127,13 @@ function () {
             element.innerHTML = fixie_fetchList();
             break;
 
+        case 'dl':
+            element.innerHTML = fixie_fetchDefinitionList();
+            break;
+       
+        case 'hr':
+            break;
+
         default:
             element.innerHTML = fixie_fetchSentence();
         }
@@ -152,7 +159,7 @@ function () {
     }
 
     function constrain(min, max){
-        return Math.round(Math.random() * (max - min) + min)
+         return Math.round(Math.random() * (max - min) + min);
     }
 
     function fixie_fetch(min, max, func, join) {
@@ -168,7 +175,7 @@ function () {
     function fetch_suroundWithTag(min, max, func, tagName) {
         var startTag = '<' + tagName + '>';
         var endTag = '</' + tagName + '>';
-        return startTag + fixie_fetch(4, 8, func, endTag + startTag) + endTag;
+        return startTag + fixie_fetch(min, max, func, endTag + startTag) + endTag;
     }
 
     function fixie_fetchPhrase() {
@@ -190,6 +197,17 @@ function () {
     function fixie_fetchList() {
         return fetch_suroundWithTag(4, 8, fixie_fetchPhrase, 'li');
     }
+
+    function fixie_fetchDefinitionList() {
+        var html = ''
+        for (var i = 0, l = constrain(3,5); i < l; i++) {
+            html += fetch_suroundWithTag(1, 1, fixie_fetchPhrase, 'dt') + fetch_suroundWithTag(1, 1, fixie_fetchPhrase, 'dd');
+        }
+        console.log(html)
+        return html;
+    }
+
+ 
    
     // Handle all elements with class 'fixie'
     fixie_handle_elements(document.getElementsByClassName('fixie'));
