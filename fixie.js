@@ -126,6 +126,10 @@ function () {
         case 'ul':
             element.innerHTML = fixie_fetchList();
             break;
+       
+        case 'hr':
+        console.log('hr')
+            break;
 
         default:
             element.innerHTML = fixie_fetchSentence();
