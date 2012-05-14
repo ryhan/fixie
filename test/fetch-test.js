@@ -48,6 +48,16 @@ describe("fixie minimal", function () {
              createElementAndTestParagraphAndSentecesAndWordCount(tagName, isSame(3), isSame(3), isSame(4));
         });
     });
+
+    ['hr'].forEach(function(tagName){
+
+        it("should not fill a &lt;" + tagName + "&gt;", function () {
+            var el = createElementAndInitFixie(tagName);
+            assert.same('', el.innerHTML);
+            el.parentNode.removeChild(el);
+              
+        });
+    });
 });
 
 describe("fixie maximal", function () {
@@ -80,21 +90,9 @@ describe("fixie maximal", function () {
                  createElementAndTestParagraphAndSentecesAndWordCount(tagName, isSame(7), isSame(7), isSame(9));
             });
         });
-
-
 });
 
-describe('fixie', function()
-{
-     it('should handle sub childs', function () {
-        var el = createElementAndInitFixie ('div');
-        el.innerHTML = '<div><header/></div>';
-        fixie.init();
-        isBetween(3,5)(el.firstChild.firstChild.innerHTML.split(' ').length);
-        el.parentNode.removeChild(el);
 
-    });
-});
 
 function isSame(excpected){
     return function(actual) {assert(excpected, actual)};
