@@ -117,7 +117,7 @@ function () {
             if(src == "" || src == null || temp == true || temp == "true"){
                 var width = element.getAttribute('width') || element.width || (element.width = 250);
                 var height = element.getAttribute('height') || element.height || (element.height = 100);
-                var title = element.getAttribute('title');
+                var title = element.getAttribute('title') || '';
                 element.src = imagePlaceHolder.replace('${w}', width).replace('${h}', height).replace('${text}', title);
                 element.setAttribute('fixie-temp-img', true);
             }
