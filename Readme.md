@@ -9,7 +9,7 @@ When designing and developing websites, it's often useful to add lorem ipsum tex
 
 Unfortunately, adding lots of filler content involves lots of copy-pasting and manual editing, and also makes your HTML unwieldy.
 
-**Fixie.js** makes filler content succinct, making it faster and easier to test out your designs.
+[Fixie.js](http://www.fixiejs.com "fixiejs")  makes filler content succinct, making it faster and easier to test out your designs.
 
 ## Instructions
 
