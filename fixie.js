@@ -13,7 +13,7 @@ function () {
     var selector;
     var imagePlaceHolder = "http://placehold.it/${w}x${h}&text=${text}";
 
-    if (typeof window.getElementsByClassName != 'function') {
+    if (typeof document.getElementsByClassName != 'function') {
         document.getElementsByClassName = function (cl) {
             var retnode = [];
             var myclass = new RegExp('\\b' + cl + '\\b');
