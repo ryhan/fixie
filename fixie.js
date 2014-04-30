@@ -104,7 +104,7 @@ var fixie = (function () {
             element.innerHTML = fixie_fetchParagraphs()
             break;
 
-        /* Special cases */
+        // Special cases
         case "a":
             element.href = "http://ryhan.me/";
             element.innerHTML = "www." + fixie_fetchWord() + fixie_capitalize(fixie_fetchWord()) + ".com";
@@ -228,8 +228,8 @@ var fixie = (function () {
     }
 
     return {
-        /* returns true if successful, false otherwise */
-        "init": function() {
+        // returns true if successful, false otherwise
+        'init': function() {
             if (selector) {
                 init_str(selector);
             } else {
