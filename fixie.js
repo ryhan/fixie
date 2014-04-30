@@ -1,4 +1,4 @@
-/* 
+/*
  * Fixie.js
  * by Ryhan Hassan
  * ryhanh@me.com
@@ -6,9 +6,8 @@
  * Automagically adds filler content
  * whenever an element has class="fixie".
  * Hope you find it useful :)
- */ 
-var fixie = (
-function () {
+ */
+var fixie = (function () {
 
     var selector;
     var imagePlaceHolder = "http://placehold.it/${w}x${h}&text=${text}";
@@ -26,10 +25,10 @@ function () {
         };
     }
 
-    /* 
+    /*
      * Spec
      * Here are some functions you might find useful
-     * 
+     *
      * fixie_handler(element)
      * fixie_handle_elements(elements)
      *
@@ -42,17 +41,17 @@ function () {
      */
 
 
-    /* 
+    /*
      * fixie_handler(element)
      *
      * Takes in an element and adds filler content.
      * Returns false if tag is unrecognized.
      */
     function fixie_handler(element) {
-        if (!/^\s*$/.test(element.innerHTML)){
+        if (!/^\s*$/.test(element.innerHTML)) {
             var childs = element.children;
-            if(childs.length){
-                for(var fixie_i = 0; fixie_i < childs.length; fixie_i++){
+            if (childs.length) {
+                for (var fixie_i = 0; fixie_i < childs.length; fixie_i++) {
                     fixie_handler(childs[fixie_i]);
                 }
             }
@@ -105,7 +104,7 @@ function () {
             element.innerHTML = fixie_fetchParagraphs()
             break;
 
-            /* Special cases */
+        /* Special cases */
         case "a":
             element.href = "http://ryhan.me/";
             element.innerHTML = "www." + fixie_fetchWord() + fixie_capitalize(fixie_fetchWord()) + ".com";
@@ -114,7 +113,7 @@ function () {
         case "img":
             var src = element.getAttribute("src") || element.src;
             var temp = element.getAttribute("fixie-temp-img");
-            if(src == "" || src == null || temp == true || temp == "true"){
+            if (src == "" || src == null || temp == true || temp == "true") {
                 var width = element.getAttribute("width") || element.width || (element.width = 250);
                 var height = element.getAttribute("height") || element.height || (element.height = 100);
                 var title = element.getAttribute("title") || "";
@@ -131,7 +130,7 @@ function () {
         case "dl":
             element.innerHTML = fixie_fetchDefinitionList();
             break;
-       
+
         case "hr":
             break;
 
@@ -141,7 +140,7 @@ function () {
     }
 
     // Handle an array of elements
-    function fixie_handle_elements(elements){
+    function fixie_handle_elements(elements) {
         for (var i = 0; i < elements.length; i++) {
             fixie_handler(elements[i]);
         }
@@ -159,7 +158,7 @@ function () {
         return fixie_wordlibrary[constrain(0, fixie_wordlibrary.length - 1 )];
     }
 
-    function constrain(min, max){
+    function constrain(min, max) {
          return Math.round(Math.random() * (max - min) + min);
     }
 
@@ -208,8 +207,7 @@ function () {
         return html;
     }
 
- 
-   
+
     // Handle all elements with class "fixie"
     fixie_handle_elements(document.getElementsByClassName("fixie"));
 
@@ -223,7 +221,7 @@ function () {
         try {
             fixie_handle_elements(document.querySelectorAll(selector_str));
             return true;
-        } 
+        }
         catch (err) {
             return false;
         }
@@ -242,12 +240,12 @@ function () {
             imagePlaceHolder = pl;
             return this;
         },
-        "setSelector": function(sl){
+        "setSelector": function(sl) {
             if (typeof sl === "object") {
                 selector = sl.join(",");
-            } else if (sl){
+            } else if (sl) {
                 selector = sl;
-            } 
+            }
             return this;
         }
     };
