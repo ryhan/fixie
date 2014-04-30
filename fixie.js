@@ -106,7 +106,10 @@ var fixie = (function () {
 
         // Special cases
         case "a":
-            element.href = "http://ryhan.me/";
+            var href = element.getAttribute("href") || element.href;
+            if (href === "" || href === null) {
+                element.href = "#";
+            }
             element.innerHTML = "www." + fixie_fetchWord() + fixie_capitalize(fixie_fetchWord()) + ".com";
             break;
 
