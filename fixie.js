@@ -12,7 +12,7 @@ var fixie = (function () {
     var selector;
     var imagePlaceHolder = "http://placehold.it/${w}x${h}&text=${text}";
 
-    if (typeof document.getElementsByClassName != "function") {
+    if (typeof document.getElementsByClassName !== "function") {
         document.getElementsByClassName = function (cl) {
             var retnode = [];
             var myclass = new RegExp("\\b" + cl + "\\b");
@@ -113,7 +113,7 @@ var fixie = (function () {
         case "img":
             var src = element.getAttribute("src") || element.src;
             var temp = element.getAttribute("fixie-temp-img");
-            if (src == "" || src == null || temp == true || temp == "true") {
+            if (src === "" || src === null || temp === true || temp === "true") {
                 var width = element.getAttribute("width") || element.width || (element.width = 250);
                 var height = element.getAttribute("height") || element.height || (element.height = 100);
                 var title = element.getAttribute("title") || "";
@@ -229,7 +229,7 @@ var fixie = (function () {
 
     return {
         // returns true if successful, false otherwise
-        'init': function() {
+        "init": function() {
             if (selector) {
                 init_str(selector);
             } else {
