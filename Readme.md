@@ -2,14 +2,12 @@
 
 Fixie is an open source tool that that automatically adds filler content to HTML documents. It's very simple, and we welcome contributions.
 
-To learn more, check out  [fixiejs.com](http://www.fixiejs.com "fixiejs") 
-
 ### Why use Fixie?
 When designing and developing websites, it's often useful to add lorem ipsum text to see what your page will look like without worrying about your final content.
 
 Unfortunately, adding lots of filler content involves lots of copy-pasting and manual editing, and also makes your HTML unwieldy.
 
-[Fixie.js](http://www.fixiejs.com "fixiejs")  makes filler content succinct, making it faster and easier to test out your designs.
+Fixie.js  makes filler content succinct, making it faster and easier to test out your designs.
 
 ## Instructions
 
@@ -58,9 +56,9 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 ### Change the default image placeholder service
 Use `fixie.setImagePlaceholder(source)`.
 
-For example, to pull images from Flickr using http://flickholdr.com/, call
+For example, to pull images a placeholder image service, e.g. http://lorempixel.com/, call
 ```
-fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init();
+fixie.setImagePlaceholder('http://lorempixel.com/${w}/${h}').init();
 ```
 
 ### Add class fixie to containers
