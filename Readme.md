@@ -53,6 +53,9 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 - `<img class="fixie"></img>` - Adds an image which displays the width and height of the image.
 - `<a class="fixie"></a>` - Adds a randomly named link.
 
+*fixie ignore `<i class="[icn|icon]"></i>` matching any class begining or containing the `icn` or `icon` words.*
+
+
 ## Tips
 
 ### Change the default image placeholder service
