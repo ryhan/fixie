@@ -11,8 +11,13 @@ var fixie = (
 function () {
 
 	var selector;
-	var imagePlaceHolder = "http://placehold.it/${w}x${h}&text=${text}";
+	var imageWidth = "${w}";
+	var imageHeight = "${h}";
+	var imageText = "${text}";
+	var defaultImageText = "fixie";
 
+	var imagePlaceHolder = "http://placehold.it/"+ imageWidth +"x"+ imageHeight +"&text="+ imageText +"";
+	
 	if (typeof document.getElementsByClassName != 'function') {
 		document.getElementsByClassName = function (cl) {
 			var retnode = [];
@@ -116,8 +121,8 @@ function () {
 				if(src == "" || src == null || temp == true || temp == "true"){
 					var width = element.getAttribute('width') || element.width || (element.width = 250);
 					var height = element.getAttribute('height') || element.height || (element.height = 100);
-					var title = element.getAttribute('title') || '';
-					element.src = imagePlaceHolder.replace('${w}', width).replace('${h}', height).replace('${text}', title);
+					var title = element.getAttribute('title') || defaultImageText;
+					element.src = imagePlaceHolder.replace(imageWidth, width).replace(imageHeight, height).replace(imageText, title);
 					element.setAttribute('fixie-temp-img', true);
 				}
 				break;
