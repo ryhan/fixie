@@ -5,6 +5,7 @@ Fixie is an open source tool that that automatically adds filler content to HTML
 To learn more, check out  [fixiejs.com](http://www.fixiejs.com "fixiejs") 
 
 ### Why use Fixie?
+
 When designing and developing websites, it's often useful to add lorem ipsum text to see what your page will look like without worrying about your final content.
 
 Unfortunately, adding lots of filler content involves lots of copy-pasting and manual editing, and also makes your HTML unwieldy.
@@ -59,6 +60,10 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 ## Tips
 
 ### Change the default image placeholder service
+
+<http://tinyfinch.com/top-12-image-placeholder-services/>
+
+
 Use `fixie.setImagePlaceholder(source)`.
 
 For example, to pull images from Flickr using http://flickholdr.com/, call
@@ -66,7 +71,15 @@ For example, to pull images from Flickr using http://flickholdr.com/, call
 fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init();
 ```
 
+or with http://www.lorempixum.com call
+```
+fixie.setImagePlaceholder('http://www.lorempixum.com/g/${w}/${h}/${tag}').init();
+```
+
+`<img class="fixie" width="300" height="200" title="sports"/>`
+
 ### Add class fixie to containers
+
 Fixxie will act on all child elements, but will never 
 overwrite content within an element.
 
@@ -80,9 +93,11 @@ Fixie will preserve the "Hello" text, but will
 automatically add content to the link.
 
 ### Fixie for Rails
+
 [fixie-rails](https://github.com/csexton/fixie-rails)
 
 ### Flagging filler content
+
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:
 
 `.fixie{ border:4px solid red; }`
