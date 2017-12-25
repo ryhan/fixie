@@ -66,14 +66,10 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 
 Use `fixie.setImagePlaceholder(source)`.
 
-For example, to pull images from Flickr using http://flickholdr.com/, call
-```
-fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init();
-```
+Example http://www.lorempixel.com call
 
-or with http://www.lorempixum.com call
 ```
-fixie.setImagePlaceholder('http://www.lorempixum.com/g/${w}/${h}/${tag}').init();
+fixie.setImagePlaceholder('http://www.lorempixel.com/${w}/${h}/${tag}').init();
 ```
 
 `<img class="fixie" width="300" height="200" title="sports"/>`
