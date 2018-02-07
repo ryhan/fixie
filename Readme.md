@@ -2,7 +2,7 @@
 
 Fixie is an open source tool that that automatically adds filler content to HTML documents. It's very simple, and we welcome contributions.
 
-To learn more, check out  [fixiejs.com](http://www.fixiejs.com "fixiejs") 
+To learn more, check out  [fixiejs.com](http://www.fixiejs.com "fixiejs")
 
 ### Why use Fixie?
 
@@ -14,7 +14,7 @@ Unfortunately, adding lots of filler content involves lots of copy-pasting and m
 
 ## Instructions
 
-### Step 1 - Add fixie.js 
+### Step 1 - Add fixie.js
 
 Add `<script type="text/javascript" src="fixie.js"></script>` to the bottom of your html document, right before your closing `</body>` tag.
 
@@ -31,9 +31,9 @@ Select where you want filler content using CSS selectors.
 
 Call
 ```
-fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"]) 
+fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"])
 ```
-or 
+or
 ```
 fixie.init(".string, #of > .comma, .separated, .selectors, .that, .should, #be > .populated, .with, .lorem")
 ```
@@ -74,9 +74,15 @@ fixie.setImagePlaceholder('http://www.lorempixel.com/${w}/${h}/${tag}').init();
 
 `<img class="fixie" width="300" height="200" title="sports"/>`
 
+https://picsum.photos/
+
+```
+fixie.setImagePlaceholder('https://picsum.photos/${w}/${h}/${tag}').init();
+```
+
 ### Add class fixie to containers
 
-Fixxie will act on all child elements, but will never 
+Fixie will act on all child elements, but will never
 overwrite content within an element.
 
 Consider the following example:
@@ -111,4 +117,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-

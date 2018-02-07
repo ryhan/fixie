@@ -10,7 +10,7 @@
 var fixie = (function () {
 
     var selector;
-    var imagePlaceHolder = "http://placehold.it/${w}x${h}&text=${text}";
+    var imagePlaceHolder = "https://placehold.it/${w}x${h}&text=${text}";
 
     if (typeof document.getElementsByClassName !== "function") {
         document.getElementsByClassName = function (cl) {
@@ -136,14 +136,14 @@ var fixie = (function () {
 
         case "hr":
             break;
-        
+
         case "i":
             var css = element.getAttribute("class");
             var patt = /(icn+|icon+)/.test(css);
             if (patt) {
                 break;
             }
-            
+
 
         default:
             element.innerHTML = fixie_fetchSentence();
