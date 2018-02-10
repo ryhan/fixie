@@ -62,6 +62,7 @@ var fixie = (function () {
         case "em":
         case "strong":
         case "button":
+        case "label":
         case "th":
         case "td":
         case "title":
@@ -135,6 +136,9 @@ var fixie = (function () {
             break;
 
         case "hr":
+            break;
+
+        case "input":
             break;
 
         case "i":
