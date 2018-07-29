@@ -55,7 +55,7 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 - `<a class="fixie"></a>` - Adds a randomly named link.
 
 *fixie ignore `<i class="[icn|icon]"></i>` matching any class begining or containing the `icn` or `icon` words.*
-
+*ignore empty div *
 
 ## Tips
 
