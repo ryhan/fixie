@@ -2,7 +2,7 @@
 
 Fixie is an open source tool that that automatically adds filler content to HTML documents. It's very simple, and we welcome contributions.
 
-To learn more, check out  [fixiejs.com](http://www.fixiejs.com "fixiejs")
+To learn more, check out the sample.html.
 
 ### Why use Fixie?
 
@@ -10,7 +10,7 @@ When designing and developing websites, it's often useful to add lorem ipsum tex
 
 Unfortunately, adding lots of filler content involves lots of copy-pasting and manual editing, and also makes your HTML unwieldy.
 
-[Fixie.js](http://www.fixiejs.com "fixiejs")  makes filler content succinct, making it faster and easier to test out your designs.
+**Fixie.js** makes filler content succinct, making it faster and easier to test out your designs.
 
 ## Instructions
 
@@ -45,6 +45,7 @@ fixie.init(':empty')
 ```
 
 ## Supported Elements
+
 Fixie inserts the right type of content based on the tag name. Here are some major types you should be aware of:
 
 - `<h1 class="fixie"></h1>` - Adds a few words of text. Same goes for `h2 - h6`
@@ -55,7 +56,7 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 - `<a class="fixie"></a>` - Adds a randomly named link.
 
 *fixie ignore `<i class="[icn|icon]"></i>` matching any class begining or containing the `icn` or `icon` words.*
-*ignore empty div *
+*ignore empty div*
 
 ## Tips
 
@@ -69,7 +70,7 @@ Use `fixie.setImagePlaceholder(source)`.
 Example http://www.lorempixel.com call
 
 ```
-fixie.setImagePlaceholder('http://www.lorempixel.com/${w}/${h}/${tag}').init();
+fixie.setImagePlaceholder('http://www.lorempixel.com/${w}/${h}/${text}').init();
 ```
 
 `<img class="fixie" width="300" height="200" title="sports"/>`
@@ -77,7 +78,7 @@ fixie.setImagePlaceholder('http://www.lorempixel.com/${w}/${h}/${tag}').init();
 https://picsum.photos/
 
 ```
-fixie.setImagePlaceholder('https://picsum.photos/${w}/${h}/${tag}').init();
+fixie.setImagePlaceholder('https://picsum.photos/${w}/${h}/${text}').init();
 ```
 
 ### Add class fixie to containers
