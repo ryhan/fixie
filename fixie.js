@@ -136,11 +136,11 @@ var fixie = (function () {
             break;
 
         case "hr":
-            break;
-
+        case "div":
         case "input":
             break;
 
+        case "span":
         case "i":
             var css = element.getAttribute("class");
             var patt = /(icn+|icon+)/.test(css);
