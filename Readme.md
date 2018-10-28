@@ -60,6 +60,14 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 
 ## Tips
 
+### Change the default dictionary
+
+```
+var words= ["Je", "france", "sport", "aurait mieux fait", "super", "voir", "plus", "Mister-graphX"];
+fixie.setWordLibrary(words).init();
+
+```
+
 ### Change the default image placeholder service
 
 <http://tinyfinch.com/top-12-image-placeholder-services/>
