@@ -4,6 +4,8 @@ Fixie is an open source tool that that automatically adds filler content to HTML
 
 To learn more, check out the sample.html.
 
+*This repository is a fork of https://github.com/ryhan/fixie, adding some features likes personal dictionary for filler contents, improved ignore rules, and updated documentation.*
+
 ### Why use Fixie?
 
 When designing and developing websites, it's often useful to add lorem ipsum text to see what your page will look like without worrying about your final content.
@@ -62,10 +64,9 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 
 ### Change the default dictionary
 
-```
+```javascript
 var words= ["Je", "france", "sport", "aurait mieux fait", "super", "voir", "plus", "Mister-graphX"];
 fixie.setWordLibrary(words).init();
-
 ```
 
 ### Change the default image placeholder service
@@ -75,19 +76,26 @@ fixie.setWordLibrary(words).init();
 
 Use `fixie.setImagePlaceholder(source)`.
 
+
+**Lorempixel**
+
 Example http://www.lorempixel.com call
 
-```
+```javascript
 fixie.setImagePlaceholder('http://www.lorempixel.com/${w}/${h}/${text}').init();
 ```
 
 `<img class="fixie" width="300" height="200" title="sports"/>`
 
+**Piscsum**
+
 https://picsum.photos/
 
+```javascript
+fixie.setImagePlaceholder('https://picsum.photos/${w}/${h}/?${text}').init();
 ```
-fixie.setImagePlaceholder('https://picsum.photos/${w}/${h}/${text}').init();
-```
+`<img class="fixie" width="300" height="200" title="[ramdom|image=0|blur|gravity=east]"/>`
+
 
 ### Add class fixie to containers
 
@@ -95,7 +103,8 @@ Fixie will act on all child elements, but will never
 overwrite content within an element.
 
 Consider the following example:
-```
+
+```xml
 <div class="fixie">
 <p>Hello <a></a></p>
 </div>
@@ -107,6 +116,7 @@ automatically add content to the link.
 
 [fixie-rails](https://github.com/csexton/fixie-rails)
 
+
 ### Flagging filler content
 
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:
@@ -114,6 +124,7 @@ When you start adding real copy to your page, try adding the following CSS to yo
 `.fixie{ border:4px solid red; }`
 
 This CSS will highlight all of your dummy content, making it easier to make sure you didn't miss anything.
+
 
 ## License
 
