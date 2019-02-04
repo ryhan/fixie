@@ -1,10 +1,11 @@
 # Fixie.js
 
+
+*This repository is a fork of https://github.com/ryhan/fixie, adding some features likes personal dictionary for filler contents, improved ignore rules, and updated documentation.*
+
 Fixie is an open source tool that that automatically adds filler content to HTML documents. It's very simple, and we welcome contributions.
 
 To learn more, check out the sample.html.
-
-*This repository is a fork of https://github.com/ryhan/fixie, adding some features likes personal dictionary for filler contents, improved ignore rules, and updated documentation.*
 
 ### Why use Fixie?
 
@@ -57,7 +58,7 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 - `<img class="fixie"></img>` - Adds an image which displays the width and height of the image.
 - `<a class="fixie"></a>` - Adds a randomly named link.
 
-*fixie ignore `<i class="[icn|icon]"></i>` matching any class begining or containing the `icn` or `icon` words.*
+*fixie ignore `<i|span class="[icn|icon]"></i|span>` matching any class begining or containing the `icn` or `icon` words.*
 *ignore empty div*
 
 ## Tips

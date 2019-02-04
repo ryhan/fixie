@@ -1,6 +1,10 @@
 /*
  * Fixie.js
- * by Ryhan Hassan
+ *
+ * v1.1.0
+ *
+ * forked from https://github.com/ryhan/fixie
+ * original Author Ryhan Hassan
  * ryhanh@me.com
  *
  * Automagically adds filler content
