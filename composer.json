@@ -1,0 +1,5 @@
+{
+    "name": "mistergraphx/fixie",
+    "description": "Forked from https://github.com/ryhan/fixie, Automatically add filler content to HTML documents based on semantic tags.",
+    "license": "MIT"
+}

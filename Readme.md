@@ -1,19 +1,23 @@
 # Fixie.js
 
+
+*This repository is a fork of https://github.com/ryhan/fixie, adding some features likes personal dictionary for filler contents, improved ignore rules, and updated documentation.*
+
 Fixie is an open source tool that that automatically adds filler content to HTML documents. It's very simple, and we welcome contributions.
 
-To learn more, check out  [fixiejs.com](http://www.fixiejs.com "fixiejs") 
+To learn more, check out the sample.html.
 
 ### Why use Fixie?
+
 When designing and developing websites, it's often useful to add lorem ipsum text to see what your page will look like without worrying about your final content.
 
 Unfortunately, adding lots of filler content involves lots of copy-pasting and manual editing, and also makes your HTML unwieldy.
 
-[Fixie.js](http://www.fixiejs.com "fixiejs")  makes filler content succinct, making it faster and easier to test out your designs.
+**Fixie.js** makes filler content succinct, making it faster and easier to test out your designs.
 
 ## Instructions
 
-### Step 1 - Add fixie.js 
+### Step 1 - Add fixie.js
 
 Add `<script type="text/javascript" src="fixie.js"></script>` to the bottom of your html document, right before your closing `</body>` tag.
 
@@ -30,9 +34,9 @@ Select where you want filler content using CSS selectors.
 
 Call
 ```
-fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"]) 
+fixie.init([".array", "#of > .selectors", ".that", ".should", "#be > .populated", ".with", ".lorem"])
 ```
-or 
+or
 ```
 fixie.init(".string, #of > .comma, .separated, .selectors, .that, .should, #be > .populated, .with, .lorem")
 ```
@@ -44,6 +48,7 @@ fixie.init(':empty')
 ```
 
 ## Supported Elements
+
 Fixie inserts the right type of content based on the tag name. Here are some major types you should be aware of:
 
 - `<h1 class="fixie"></h1>` - Adds a few words of text. Same goes for `h2 - h6`
@@ -53,22 +58,54 @@ Fixie inserts the right type of content based on the tag name. Here are some maj
 - `<img class="fixie"></img>` - Adds an image which displays the width and height of the image.
 - `<a class="fixie"></a>` - Adds a randomly named link.
 
+*fixie ignore `<i|span class="[icn|icon]"></i|span>` matching any class begining or containing the `icn` or `icon` words.*
+*ignore empty div*
+
 ## Tips
 
+### Change the default dictionary
+
+```javascript
+var words= ["Je", "france", "sport", "aurait mieux fait", "super", "voir", "plus", "Mister-graphX"];
+fixie.setWordLibrary(words).init();
+```
+
 ### Change the default image placeholder service
+
+<http://tinyfinch.com/top-12-image-placeholder-services/>
+
+
 Use `fixie.setImagePlaceholder(source)`.
 
-For example, to pull images from Flickr using http://flickholdr.com/, call
-```
-fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/canon').init();
+
+**Lorempixel**
+
+Example http://www.lorempixel.com call
+
+```javascript
+fixie.setImagePlaceholder('http://www.lorempixel.com/${w}/${h}/${text}').init();
 ```
 
+`<img class="fixie" width="300" height="200" title="sports"/>`
+
+**Piscsum**
+
+https://picsum.photos/
+
+```javascript
+fixie.setImagePlaceholder('https://picsum.photos/${w}/${h}/?${text}').init();
+```
+`<img class="fixie" width="300" height="200" title="[ramdom|image=0|blur|gravity=east]"/>`
+
+
 ### Add class fixie to containers
-Fixxie will act on all child elements, but will never 
+
+Fixie will act on all child elements, but will never
 overwrite content within an element.
 
 Consider the following example:
-```
+
+```xml
 <div class="fixie">
 <p>Hello <a></a></p>
 </div>
@@ -77,14 +114,18 @@ Fixie will preserve the "Hello" text, but will
 automatically add content to the link.
 
 ### Fixie for Rails
+
 [fixie-rails](https://github.com/csexton/fixie-rails)
 
+
 ### Flagging filler content
+
 When you start adding real copy to your page, try adding the following CSS to your stylesheet:
 
 `.fixie{ border:4px solid red; }`
 
 This CSS will highlight all of your dummy content, making it easier to make sure you didn't miss anything.
+
 
 ## License
 
@@ -97,4 +138,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-

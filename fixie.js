@@ -1,6 +1,10 @@
 /*
  * Fixie.js
- * by Ryhan Hassan
+ *
+ * v1.1.0
+ *
+ * forked from https://github.com/ryhan/fixie
+ * original Author Ryhan Hassan
  * ryhanh@me.com
  *
  * Automagically adds filler content
@@ -10,7 +14,8 @@
 var fixie = (function () {
 
     var selector;
-    var imagePlaceHolder = "http://placehold.it/${w}x${h}&text=${text}";
+    var fixie_wordlibrary = ["8-bit", "ethical", "reprehenderit", "delectus", "non", "latte", "fixie", "mollit", "authentic", "1982", "moon", "helvetica", "dreamcatcher", "esse", "vinyl", "nulla", "Carles", "bushwick", "bronson", "clothesline", "fin", "frado", "jug", "kale", "organic", "local", "fresh", "tassel", "liberal", "art", "the", "of", "bennie", "chowder", "daisy", "gluten", "hog", "capitalism", "is", "vegan", "ut", "farm-to-table", "etsy", "incididunt", "sunt", "twee", "yr", "before", "gentrify", "whatever", "wes", "Anderson", "chillwave", "dubstep", "sriracha", "voluptate", "pour-over", "esse", "trust-fund", "Pinterest", "Instagram", "DSLR", "vintage", "dumpster", "totally", "selvage", "gluten-free", "brooklyn", "placeat", "delectus", "sint", "magna", "brony", "pony", "party", "beer", "shot", "narwhal", "salvia", "letterpress", "art", "party", "street-art", "seitan", "anime", "wayfarers", "non-ethical", "viral", "iphone", "anim", "polaroid", "gastropub", "city", "classy", "original", "brew"];
+    var imagePlaceHolder = "https://placehold.it/${w}x${h}&text=${text}";
 
     if (typeof document.getElementsByClassName !== "function") {
         document.getElementsByClassName = function (cl) {
@@ -24,7 +29,6 @@ var fixie = (function () {
             return retnode;
         };
     }
-
     /*
      * Spec
      * Here are some functions you might find useful
@@ -62,6 +66,7 @@ var fixie = (function () {
         case "em":
         case "strong":
         case "button":
+        case "label":
         case "th":
         case "td":
         case "title":
@@ -77,7 +82,7 @@ var fixie = (function () {
         case "s":
         case "u":
         case "small":
-        case "span":
+        // case "span":
         case "code":
         case "pre":
         case "li":
@@ -135,7 +140,18 @@ var fixie = (function () {
             break;
 
         case "hr":
+        case "div":
+        case "input":
             break;
+
+        case "span":
+        case "i":
+            var css = element.getAttribute("class");
+            var patt = /(icn+|icon+)/.test(css);
+            if (patt) {
+                break;
+            }
+
 
         default:
             element.innerHTML = fixie_fetchSentence();
@@ -150,9 +166,7 @@ var fixie = (function () {
     }
 
 
-    // Begin generator
-    var fixie_wordlibrary = ["I", "8-bit", "ethical", "reprehenderit", "delectus", "non", "latte", "fixie", "mollit", "authentic", "1982", "moon", "helvetica", "dreamcatcher", "esse", "vinyl", "nulla", "Carles", "bushwick", "bronson", "clothesline", "fin", "frado", "jug", "kale", "organic", "local", "fresh", "tassel", "liberal", "art", "the", "of", "bennie", "chowder", "daisy", "gluten", "hog", "capitalism", "is", "vegan", "ut", "farm-to-table", "etsy", "incididunt", "sunt", "twee", "yr", "before", "gentrify", "whatever", "wes", "Anderson", "chillwave", "dubstep", "sriracha", "voluptate", "pour-over", "esse", "trust-fund", "Pinterest", "Instagram", "DSLR", "vintage", "dumpster", "totally", "selvage", "gluten-free", "brooklyn", "placeat", "delectus", "sint", "magna", "brony", "pony", "party", "beer", "shot", "narwhal", "salvia", "letterpress", "art", "party", "street-art", "seitan", "anime", "wayfarers", "non-ethical", "viral", "iphone", "anim", "polaroid", "gastropub", "city", "classy", "original", "brew"]
-
+    // Generator functions
     function fixie_capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -206,17 +220,13 @@ var fixie = (function () {
         for (var i = 0, l = constrain(3,5); i < l; i++) {
             html += fetch_suroundWithTag(1, 1, fixie_fetchPhrase, "dt") + fetch_suroundWithTag(1, 1, fixie_fetchPhrase, "dd");
         }
-        console.log(html)
         return html;
     }
 
-
     // Handle all elements with class "fixie"
-    fixie_handle_elements(document.getElementsByClassName("fixie"));
+    // fixie_handle_elements(document.getElementsByClassName("fixie"));
 
     // Handle elements which match give css selectors
-
-
     function init_str(selector_str) {
         if (!document.querySelectorAll) {
             return false;
@@ -249,6 +259,10 @@ var fixie = (function () {
             } else if (sl) {
                 selector = sl;
             }
+            return this;
+        },
+        "setWordLibrary": function(dic){
+            fixie_wordlibrary = dic;
             return this;
         }
     };

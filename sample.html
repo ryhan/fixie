@@ -21,6 +21,13 @@
 <body>
 	<article>
 		<h1 class="fixie"></h1>
+		<section class="fixie">
+			<!-- Ignored elements -->
+			<div></div>
+			<hr>
+			<span class="icon"></span>
+			<i class="icon"></i>
+		</section>
 		<p> Check us out at <a class="fixie"></a>,
 			and don't forget to view source.</p>
 		<section class="fixie">
@@ -36,8 +43,11 @@
 
 	<script type="text/javascript" src="fixie.js"></script>
 	<script>
-		// Changes default image source to Flickr
-		fixie.setImagePlaceholder('http://flickholdr.com/${w}/${h}/fixie').init();
+		// Change default dictionary
+		var words= ["Je", "france", "sport", "aurait mieux fait", "super", "voir", "plus", "Mister-graphX"];
+		fixie.setWordLibrary(words).init();
+		// Changes default image source to Picsum
+ 		// fixie.setImagePlaceholder('https://picsum.photos/${w}/${h}/${text}').init();
 	</script>
 </body>
 </html>
